@@ -1,0 +1,15 @@
+.pilt {
+  height: 100px;
+  width: 300px;
+}
+
+.pilt:hover {
+  opacity: 0;
+}
+
+.nupp {
+  background-color: yellow;
+}
+.nupp:hover {
+  font-weight: bold;
+}
