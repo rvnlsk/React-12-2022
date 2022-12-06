@@ -1,0 +1,30 @@
+.pilt {
+height: 250px;
+width: 280px;
+float: right;
+}
+
+
+.tekst {
+  font-style: italic;
+  color: blue
+  
+}
+
+.tekst:hover {
+  font-size: 24px;
+}
+
+.nupp {
+background-color: green;
+color: lightgray;
+}
+
+.nupp:hover {
+  height: 100px;
+}
+
+.nupp:active{
+cursor: grab;
+}
+
