@@ -5,6 +5,7 @@ import Avaleht from './pages/Avaleht';
 import Kontakt from './pages/Kontakt';
 import Meist from './pages/Meist';
 import Seaded from './pages/Seaded';
+import Books from './pages/Books';
 import { useState } from 'react';
 import { useRef } from 'react';
 
@@ -50,6 +51,9 @@ function App() {
     <Link to="/seaded">
       <button>Seadetesse</button>
     </Link>
+    <Link to="/books">
+      <button>Books</button>
+    </Link>
 
 
     <Routes>
@@ -57,6 +61,7 @@ function App() {
       <Route path= "kontakt" element={ <Kontakt /> } />
       <Route path= "meist" element={ <Meist /> } />
       <Route path= "seaded" element={ <Seaded /> } />
+      <Route path= "books" element={ <Books /> } />
     </Routes>
 
   </div>
