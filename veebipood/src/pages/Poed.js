@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function Poed() {
   const [poed, uuendaPoed] = useState(["Kristiine", "Kesklinnake", "Marja", "Telliskivi", "Kirsilinn", "Maalinn"])
@@ -73,9 +73,25 @@ function Poed() {
     uuendaPoed(tulem);
   }
 
+  const kustuta = (j2rjekorraNr) => {
+    poed.splice(j2rjekorraNr, 1);
+    uuendaPoed(poed.slice())
+
+  }
+
+  const poodRef = useRef();
+
+  const lisa = () => {
+    poed.push(poodRef.current.value);
+    uuendaPoed(poed.slice());
+
+  }
+
 
   return (
     <div>
+    <div>
+      
       <button onClick={paneTagasi}>Pane koik tagasi</button>
       <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
       <button onClick={sorteeriZA}>Sorteeri Z-A</button>
@@ -89,9 +105,21 @@ function Poed() {
       <button onClick={muudaKoikiSuureks}>Muuda koik suurteks tahtedeks</button>
       <button onClick={muudaKoigilePikkuseNrLoppu}>Pikkuse nr loppu</button>
       <button onClick={muudaKoigileIAsemelO}>I asemel O</button>
+      </div>
+
+
+
+      <label>Poe nimi</label> <br />
+      <input ref={poodRef} type="text" /> <br />
+      <button onClick={lisa}>Lisa</button> <br />
+
+
 
       <div>{poed.lenght}</div>
-      {poed.map((yksPood,index) => <div key={index}>{yksPood}</div>)}
+        {poed.map((yksPood,index) => <div key={index}> 
+        {index} {yksPood} 
+        <button onClick={() => kustuta(index)}>x</button>
+      </div>)} 
       <div>-----------------</div>
       <div>Kristiine</div>
       <div>Kesklinnake</div>
