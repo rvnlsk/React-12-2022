@@ -3,77 +3,74 @@ import poedFailist from "../poed.json";
 
 function Poed() {
   const [poed, uuendaPoed] = useState(poedFailist.slice());
-  const poodRef = useRef();
-  const aegRef = useRef();
 
   const paneTagasi = () => {
     uuendaPoed(poedFailist.slice());
   }
 
   const sorteeriAZ = () => {
-  // poed.sort();
-  poed.sort((a, b) => a.nimi.localeCompare(b.nimi));
+  poed.sort();
+  console.log(poed);
   uuendaPoed(poed.slice());
-//a on vasakpoolne, b on parempoolne
 
   }
 
   const sorteeriZA = () => {
-    poed.sort((a, b) => b.nimi.localeCompare(a.nimi));
+    poed.sort((a, b) => b.localeCompare(a));
     uuendaPoed(poed.slice());
 
  }
 
  const sorteeriTahtedeJarjekorras = () => {
-  poed.sort((a, b) => a.nimi.length - b.nimi.length);
+  poed.sort((a, b) => a.length - b.length);
   uuendaPoed(poed.slice());
 
  }
 
  const sorteeriTahedVastupidi = () => {
-  poed.sort((a, b) => b.nimi.length - a.nimi.length);
+  poed.sort((a, b) => b.length - a.length);
   uuendaPoed(poed.slice());
 
  }
 
  const filtreeriKivi = () => {
-  const tulem = poed.filter(element => element.nimi.endsWith("kivi") === true);
+  const tulem = poed.filter(element => element.endsWith("kivi") === true);
   uuendaPoed(tulem);
  }
 
  const filtreeriLinn = () => {
-  const tulem = poed.filter(element => element.nimi.includes("linn") === true);
+  const tulem = poed.filter(element => element.includes("linn") === true);
   uuendaPoed(tulem);
  }
 
  const filtreeriTaheArv7 = () => {
-  const tulem = poed.filter(element => element.nimi.length === 7);
+  const tulem = poed.filter(element => element.length === 7);
   uuendaPoed(tulem);
  }
 
  const filtreeriTaheArvVaiksemKui7 = () => {
-  const tulem = poed.filter(element => element.nimi.length < 7);
+  const tulem = poed.filter(element => element.length < 7);
   uuendaPoed(tulem);
  }
 
  const filtreeriKellelKolmasS= () => {
-  const tulem = poed.filter(element => element.nimi.charAt(2) === "s");
+  const tulem = poed.filter(element => element.charAt(2) === "s");
   uuendaPoed(tulem);
  }
 
  const muudaKoikiSuureks = () => {
-  const tulem = poed.map(element => {return{"nimi":element.nimi.toUpperCase(), "aeg": element.aeg}});
+  const tulem = poed.map(element => element.toUpperCase());
   uuendaPoed(tulem);
 
   }
 
   const muudaKoigilePikkuseNrLoppu = () => {
-    const tulem = poed.map(element => {return{"nimi": element.nimi + element.nimi.length, "aeg": element.aeg}});
+    const tulem = poed.map(element => element + element.length);
     uuendaPoed(tulem);
   }
 
   const muudaKoigileIAsemelO = () => {
-    const tulem = poed.map(element => {return{"nimi": element.nimi.replaceAll("i", "o"), "aeg": element.aeg}});
+    const tulem = poed.map(element => element.replaceAll("i", "o"));
     uuendaPoed(tulem);
   }
 
@@ -83,10 +80,10 @@ function Poed() {
 
   }
 
-
+  const poodRef = useRef();
 
   const lisa = () => {
-    poed.push({"nimi": poodRef.current.value, "aeg": aegRef.current.value});
+    poed.push(poodRef.current.value);
     uuendaPoed(poed.slice());
 
   }
@@ -115,15 +112,13 @@ function Poed() {
 
       <label>Poe nimi</label> <br />
       <input ref={poodRef} type="text" /> <br />
-      <label>Poe lahtiolekuaeg</label> <br />
-        <input ref={aegRef} type="text" /> <br />
       <button onClick={lisa}>Lisa</button> <br />
 
 
 
       <div>{poed.lenght}</div>
         {poed.map((yksPood,index) => <div key={index}> 
-        {index} {yksPood.nimi} {yksPood.aeg}
+        {index} {yksPood} 
         <button onClick={() => kustuta(index)}>x</button>
       </div>)} 
       <div>-----------------</div>

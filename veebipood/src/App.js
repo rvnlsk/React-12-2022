@@ -58,8 +58,8 @@ function App() {
         <Route path="seaded" element={ <Seaded />} />
         <Route path="tooted" element={ <Tooted />} />
         <Route path="halda-tooteid" element={ <HaldaTooteid />} />
-        <Route path="muuda" element={ <MuudaToode />} />
-        <Route path="toode:/index" element={ <YksikToode />} />
+        <Route path="muuda/:i" element={ <MuudaToode />} /> 
+        <Route path="toode/:index" element={ <YksikToode />} />
       </Routes>
       
     </div>
