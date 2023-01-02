@@ -5,6 +5,10 @@ import Avaleht from "./pages/Avaleht";
 import Uudised from "./pages/Uudised";
 import Kontakt from "./pages/Kontakt";
 import Meist from "./pages/Meist";
+import LisaUudis from "./pages/LisaUudis";
+import HaldaUudiseid from "./pages/HaldaUudiseid";
+import YksUudis from "./pages/YksUudis";
+import MuudaUudis from "./pages/MuudaUudis";
 
 function App() {
  return (
@@ -21,13 +25,23 @@ function App() {
     <Link to="/meist">
       <button>Info meist</button>
     </Link>
+    <Link to="/lisa-uudis">
+      <button>Lisa uudis</button>
+    </Link>
+    <Link to="/halda">
+      <button>Halda uudiseid</button>
+    </Link>
 
 
     <Routes>
-      <Route path='' element={ <div>See on avaleht, nahtav localhost:3000 aadressil</div>} />
-      <Route path= "uudised" element={<div>See on uudiste leht, nahtav localhost:3000/uudised aadressil</div>} />
-      <Route path= "kontakt" element={<div>See on kontaktide leht, nahtav localhost:3000/kontakt aadressil</div>} />
-      <Route path= "meist" element={<div>See on meist leht, nahtav localhost:3000/meist aadressil</div>} />
+      <Route path='' element={  <Avaleht /> } />
+      <Route path= "uudised" element={ <Uudised /> } />
+      <Route path= "kontakt" element={ <Kontakt /> } />
+      <Route path= "meist" element={ <Meist /> } />
+      <Route path= "lisa-uudis" element={ <LisaUudis /> } />
+      <Route path= "halda" element={ <HaldaUudiseid /> } />
+      <Route path= "uudis/:index" element={ <YksUudis /> } />
+      <Route path= "muuda/:index" element={ <MuudaUudis /> } />
 
     </Routes>
 

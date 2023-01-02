@@ -13,7 +13,7 @@ function App() {
       <div className="navigation-pictures">
         <Link className="main-link" to="work">
         <img src="https://blog.optimalworkshop.com/wp-content/uploads/2020/03/19-user-research-tips-from-2019.png" alt="" />
-        <p>Toode lehele</p>
+        <p>Tehtud toode lehele</p>
         </Link>
         <Link className="main-link" to="hobbies">
         <img src="https://static01.nyt.com/images/2019/10/16/autossell/hobby_promo/hobby_promo-master768.jpg" alt="" />
@@ -26,11 +26,17 @@ function App() {
     </div>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/wfC1qxJ59dM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br /> <br />
       <Routes>
-        <Route path="work" element={ <div>Work</div> } />
-        <Route path="hobbies" element={ <div>Hobbies</div> } />
-        <Route path="courses" element={ <div>Courses</div> } />
+        <Route path="work" element={ <Work /> } />
+        <Route path="hobbies" element={ <Hobbies /> } />
+        <Route path="courses" element={ <Courses /> } />
       </Routes>
+
+      <a className="facebook-button" href="https://www.facebook.com/jee">
+        <img src="/facebook.png" alt="" />
+        <span>Facebook</span>
+      </a>
 
     </div>
     

@@ -6,7 +6,7 @@ function Work() {
     <Link to="/">
         <button>Tagasi</button>
     </Link>
-    <div>Toode sisu</div>
+    <div>Tehtud toode sisu</div>
     </div> );
   
 }

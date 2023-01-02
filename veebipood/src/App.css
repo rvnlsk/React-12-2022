@@ -9,8 +9,20 @@
 
 .nupp {
   background-color: rgb(165, 13, 13);
+  color: white
 }
+
 .nupp:hover {
   font-weight: bold;
   cursor: pointer;
+}
+
+.aktiivne {
+  border: 1px solid green;
+  background-color: rgb(137, 187, 145);
+}
+
+.mitteaktiivne {
+  border: 1px solid red;
+  background-color: rgb(201, 73, 73);
 }

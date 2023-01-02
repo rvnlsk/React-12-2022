@@ -6,7 +6,7 @@ function Courses() {
         <Link to="/">
             <button>Tagasi</button>
         </Link>
-    <div>kursuste sisu</div>
+    <div>Kursuste sisu</div>
     </div> );
   
 }
