@@ -1,12 +1,28 @@
+
 import productsFromFile from "../data/products.json";
 
 function HomePage() {
+ 
 
-  const addToCart = () => {}
+  const addToCart = (productClicked) => {
+    let cartLS = localStorage.getItem("cart");
+    cartLS = JSON.parse(cartLS) || [];
+    const index = cartLS.findIndex(element => element.product.id === productClicked.id);
+    if (index >=0) {
+
+      cartLS[index].quantity = cartLS[index].quantity + 1; 
+    } else {
+    cartLS.push({"product": productClicked, "quantity": 1});
+  }
+    cartLS = JSON.stringify(cartLS);
+    localStorage.setItem("cart", cartLS);
+  }
+  
+  
   
   return (
     <div>
-      {productsFromFile.map(element =>
+        {productsFromFile.map(element =>
         <div key={element.id}>
           <img src={element.image} alt="" />
           <div>{element.id}</div>
@@ -16,7 +32,7 @@ function HomePage() {
           <div>{element.catecory}</div>
           <div>{element.description}</div>
           <div>{element.active}</div>
-          <button>Lisa ostukorvi</button>
+          <button onClick={() => addToCart(element)}>Lisa ostukorvi</button>
           </div>)}
     </div>
   )

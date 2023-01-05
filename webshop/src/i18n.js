@@ -11,7 +11,7 @@ const resources = {
       "admin": "To admin view",
       "shops": "Our shops",
       "contact": "Contact us",
-      "cart": "cart",
+      "cart": "Cart",
 
     }
   },
