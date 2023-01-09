@@ -15,6 +15,17 @@ const resources = {
 
     }
   },
+
+  es: {
+    translation: {
+      "Welcome to React": "Bienvenido a React",
+      "admin": "A la vista de administrador",
+      "shops": "Nuestras tiendas",
+      "contact": "Contacta con nosotros",
+      "cart": "Al Carrito"
+    }
+  },
+  
   ee: {
     translation: {
       "Welcome to React": "Bienvenue à React et react-i18next",

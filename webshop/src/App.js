@@ -39,6 +39,7 @@ function App() {
           </Nav>
           <img className="lang" onClick={() => changeLang("ee")} src="/estonia.png" alt="" />
           <img className="lang" onClick={() => changeLang("en")} src="/united-kingdom.png" alt="" />
+          <img className="lang" onClick={() => changeLang("es")} src="/spain.png" alt="" />
           
         </Container>
       </Navbar>
@@ -52,7 +53,7 @@ function App() {
       <Route path="product" element={ <SingleProduct /> } />
       <Route path="admin" element={ <AdminHome /> } />
       <Route path="admin/add-product" element={ <AddProduct /> } />
-      <Route path="admin/edit-product" element={ <EditProduct /> } />
+      <Route path="admin/edit-product/:productId" element={ <EditProduct /> } />
       <Route path="admin/maintain-categories" element={ <MaintainCategories /> } />
       <Route path="admin/maintain-products" element={ <MaintainProducts /> } />
       <Route path="admin/maintain-shops" element={ <MaintainShops /> } />
