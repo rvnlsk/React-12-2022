@@ -32,7 +32,7 @@ function HomePage() {
           <div>{element.catecory}</div>
           <div>{element.description}</div>
           <div>{element.active}</div>
-          <button onClick={() => addToCart(element)}>Lisa ostukorvi</button>
+          <button onClick={() => addToCart(element)}>Add to cart</button>
           </div>)}
     </div>
   )

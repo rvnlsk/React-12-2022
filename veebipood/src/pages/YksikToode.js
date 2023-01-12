@@ -19,4 +19,4 @@ function YksikToode() {
   )
 }
 
-export default YksikToode
+export default YksikToode;

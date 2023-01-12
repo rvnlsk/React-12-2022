@@ -12,6 +12,8 @@ const resources = {
       "shops": "Our shops",
       "contact": "Contact us",
       "cart": "Cart",
+      
+      
 
     }
   },
@@ -33,6 +35,9 @@ const resources = {
       "shops": "Meie poed",
       "contact": "Kontakteeru meiega",
       "cart": "Ostukorvi",
+      "add to cart": "Lisa ostukorvi",
+      
+      
     }
   }
 };

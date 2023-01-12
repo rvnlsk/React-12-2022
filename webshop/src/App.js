@@ -2,8 +2,8 @@ import { Link, Route, Routes } from "react-router-dom";
 import './App.css';
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
-import Shops from "./pages/Shops";
-import ContactUs from "./pages/ContactUs";
+import Shops from "./pages/Shops"; // imporditud on default kaudu: export default shops
+import {ContactUs} from "./pages/ContactUs"; // imporditud const kaudu: export const contactus
 import SingleProduct from "./pages/SingleProduct";
 import AdminHome from "./pages/admin/AdminHome";
 import AddProduct from "./pages/admin/AddProduct";
@@ -15,6 +15,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
+
 
 
 function App() {
