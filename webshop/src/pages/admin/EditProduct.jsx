@@ -1,13 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import productsFromFile from "../../data/products.json";
+import config from "../../data/config.json";
 
 function EditProduct() {
   const { productId } = useParams();
   const [idUnique, setIdUnique] = useState(true);
+  const [dbProducts, setDbProducts] = useState([]);
 
-  const productFound = productsFromFile.find(element => element.id === Number(productId));
-  const index = productsFromFile.indexOf(productFound);
+  const productFound = dbProducts.find(element => element.id === Number(productId));
+  const index = dbProducts.indexOf(productFound);
 
   const idRef = useRef ();
   const nameRef = useRef ();
@@ -17,6 +18,15 @@ function EditProduct() {
   const descriptionRef = useRef ();
   const activeRef = useRef ();
   const navigate = useNavigate ();
+
+
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      setDbProducts(json);
+    });
+  }, []);
 
   const changeProduct = () => {
     const updatedProduct = {
@@ -29,13 +39,17 @@ function EditProduct() {
       "active": activeRef.current.checked,
     }
     // .push(newProduct)
-    productsFromFile[index] = updatedProduct;
-    navigate("/admin/maintain-products");
+    dbProducts[index] = updatedProduct;
+    fetch(config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(dbProducts)})
+    .then(() => {
+      navigate("/admin/maintain-products");
+       })
+    
   }
 
 
   const checkIdUniqueness = () => {
-    const found = productsFromFile.find(element => element.id === Number(idRef.current.value));
+    const found = dbProducts.find(element => element.id === Number(idRef.current.value));
     if (found === undefined) {
       setIdUnique(true);
     } else {

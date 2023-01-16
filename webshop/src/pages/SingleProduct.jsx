@@ -21,3 +21,6 @@ function SingleProduct() {
 }
 
 export default SingleProduct;
+
+// <Link to={"/toode/" + index}>
+// <img src={element.pilt} alt="" />

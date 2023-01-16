@@ -15,6 +15,9 @@ export const ContactUs = () => {
       });
   };
 
+  // 1.rfce  2.import react sona maha 3.label ja input ymber form tagid
+  // ok tee kodus iseseisvalt edasi
+
   return (
     <form ref={form} onSubmit={sendEmail}>
       <label>Name</label>

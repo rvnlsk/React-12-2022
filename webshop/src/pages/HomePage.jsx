@@ -1,7 +1,22 @@
 
-import productsFromFile from "../data/products.json";
+import config from "../data/config.json";
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 function HomePage() {
+  const { t } = useTranslation();
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      setProducts(json);
+      setDbProducts(json);
+    });
+  }, []);
  
 
   const addToCart = (productClicked) => {
@@ -16,13 +31,28 @@ function HomePage() {
   }
     cartLS = JSON.stringify(cartLS);
     localStorage.setItem("cart", cartLS);
+    toast.success(t("added-to-cart"), {"position": "bottom-right", "theme": "dark"});
   }
   
-  
+  const filterByCategory = (categoryClicked) => {
+    const result = dbProducts.filter(element => element.category === categoryClicked);
+    setProducts(result);
+  }
+
+  const categories = [...new Set(dbProducts.map(element => element.category))];
   
   return (
     <div>
-        {productsFromFile.map(element =>
+      <button>Sorteeri a-z</button>
+      <button>Sorteeri z-a</button>
+      <button>hind kasvavalt</button>
+      <button>hind kahanevalt</button>
+      <div>{products.length}tk</div>
+      {/* <button onClick={() => filterByCategory("belts")}>belts</button>
+      <button onClick={() => filterByCategory("headphones")}>headphones</button> */}
+      {categories.map(element => <button onClick={() => filterByCategory(element)}>{element}</button>)}
+       <ToastContainer />
+        {products.map(element =>
         <div key={element.id}>
           <img src={element.image} alt="" />
           <div>{element.id}</div>

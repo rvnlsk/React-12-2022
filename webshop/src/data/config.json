@@ -1,0 +1,4 @@
+{
+    "productsDbUrl": "https://xxproov-default-rtdb.europe-west1.firebasedatabase.app/products.json",
+    "categoriesDbUrl": "https://xxproov-default-rtdb.europe-west1.firebasedatabase.app/categories.json"
+}
