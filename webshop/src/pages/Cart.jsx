@@ -1,21 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Cart.css";
 import Button from '@mui/material/Button';
+import ParcelMachines from "../components/cart/ParcelMachines";
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
-  const [parcelMachines, setParcelMachines] = useState([]);
-  const [dbParcelMachines, setDbParcelMachines] = useState([]);
-
-  useEffect(() => { //useffect kui tulen lehele ja kohe toimub API p2ring
-    fetch("https://www.omniva.ee/locations.json")
-    .then(response => response.json()) // response voib lyhemalt ka res kirjutada
-    .then(json => {
-      setParcelMachines(json);
-      setDbParcelMachines(json);
-      })
-  }, []);
+  
 
    // tyhjendamine
   const empty = () => {
@@ -52,14 +43,7 @@ function Cart() {
     return cartsum.toFixed(2);
   }
 
-  const searchedRef = useRef();
-
-  const searchFromParcelMachines = () => {
-    const result = dbParcelMachines.filter(element =>
-      element.NAME.toLowerCase().includes(searchedRef.current.value.toLowerCase())
-    );
-      setParcelMachines(result);
-  }
+  
 
   const pay = () => {
     const paymentUrl = "https://igw-demo.every-pay.com/api/v4/payments/oneoff";
@@ -108,17 +92,11 @@ function Cart() {
         </div>)}
         {cart.length > 0 &&
         <div className="cart-bottom">
-        <div>Total amount is: {calculateCartsum()} eur</div>
-        <input ref={searchedRef} onChange={searchFromParcelMachines} placeholder="Otsi siit" type="text" />
+        <div>Total amount is: {calculateCartsum()} eur</div> <br />
+        
         <br />
-        <select>
-         {parcelMachines
-         .filter(element => element.NAME !== "1.eelistus minu.omniva.ee-s")
-         .filter(element => element.A0_NAME === "EE")
-         .map(element => <option key={element.NAME}>{element.NAME}</option>)}
-         {parcelMachines.length === 0 && <option disabled selected>Ei leitud</option>}
-        </select>
-
+        <ParcelMachines />
+        
         <button onClick={pay}>Maksa</button>
     </div>}
     </div>
@@ -126,5 +104,7 @@ function Cart() {
   
   )
 }
+
+// 150+ rida -- hakkame motlema valjatostmsie peale ja 200 rida tostame valja
 
 export default Cart

@@ -2,11 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import config from "../../data/config.json";
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
+import "../../css/MaintainProducts.css";
 
 function MaintainProducts() {
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
   const searchedRef = useRef();
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(config.productsDbUrl)
@@ -14,6 +17,7 @@ function MaintainProducts() {
     .then(json => {
       setProducts(json);
       setDbProducts(json);
+      setLoading(false);
     });
   }, []);
 
@@ -33,13 +37,17 @@ function MaintainProducts() {
     setProducts(result);
   }
 
+  if (isLoading === true) {
+    return (<Spinner />)
+    }
+
   return (
     <div>
        <ToastContainer />
        <input ref={searchedRef} onChange={searchFromProducts} placeholder="Otsi siit" type="text" />
        <div>{products.length} tk</div>
       {products.map((element, index) =>
-        <div key={element.id}>
+        <div key={element.id} className={element.active === true ? "active" : "inactive"}>
           <img src={element.image} alt="" />
           <div>{element.id}</div>
           <div>{element.name}</div>

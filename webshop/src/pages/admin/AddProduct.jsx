@@ -28,6 +28,35 @@ function AddProduct() {
   }, []);
 
   const addProduct = () => {
+    if (idRef.current.value === "") {
+      toast.error("ID lisamata!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+    if (nameRef.current.value === "") {
+      toast.error("Nimi lisamata!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+    if (nameRef.current.value.charAt(0).toLowerCase() === nameRef.current.value.charAt(0)) {
+      toast.error("Pead lisama suure algustahega!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+    if (imageRef.current.value === "") {
+      toast.error("Pilt lisamata!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+    if (imageRef.current.value.replaceAll(" ", "") !== imageRef.current.value) {
+      toast.error("Pildi URL-is ei saa olla tyhikuid!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+    if (descriptionRef.current.value === "") {
+      toast.error("Kirjeldus lisamata!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+    if (priceRef.current.value === "") {
+      toast.error("Hind lisamata!", {"position": "bottom-right", "theme": "dark"});
+      return;
+    }
+
     const newProduct = {
         id: Number(idRef.current.value),
         name: nameRef.current.value,
@@ -36,6 +65,7 @@ function AddProduct() {
         category: categoryRef.current.value,
         description: descriptionRef.current.value,
         active: activeRef.current.checked,
+        date: new Date()
     }
     dbProducts.push(newProduct);
     fetch(config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(dbProducts)})

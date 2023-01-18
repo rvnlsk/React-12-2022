@@ -1,13 +1,16 @@
-
+import { Link } from "react-router-dom";
 import config from "../data/config.json";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Spinner from "react-bootstrap/Spinner";
+
 
 function HomePage() {
   const { t } = useTranslation();
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(config.productsDbUrl)
@@ -15,6 +18,7 @@ function HomePage() {
     .then(json => {
       setProducts(json);
       setDbProducts(json);
+      setLoading(false);
     });
   }, []);
  
@@ -31,7 +35,7 @@ function HomePage() {
   }
     cartLS = JSON.stringify(cartLS);
     localStorage.setItem("cart", cartLS);
-    toast.success(t("added-to-cart"), {"position": "bottom-right", "theme": "dark"});
+    toast.success(t("Added to cart!"), {"position": "bottom-right", "theme": "dark"});
   }
   
   const filterByCategory = (categoryClicked) => {
@@ -40,13 +44,50 @@ function HomePage() {
   }
 
   const categories = [...new Set(dbProducts.map(element => element.category))];
+
+  const sortAZ = () => {
+    products.sort((a, b) => a.name.localeCompare(b.name));
+    setProducts(products.slice());
+  }
+
+  const sortZA = () => {
+    products.sort((a, b) => b.name.localeCompare(a.name));
+    setProducts(products.slice());
+  }
+
+  const sortPriceAsc = () => {
+    products.sort((a, b) => a.price - b.price);
+    setProducts(products.slice());
+  }
+
+  const sortPriceDesc = () => {
+    products.sort((a, b) => b.price - a.price);
+    setProducts(products.slice());
+  }
+
+  const sortDateAsc = () => {
+    products.sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
+    setProducts(products.slice());
+  }
+
+  const sortDateDesc = () => {
+    products.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+    setProducts(products.slice());
+  }
+
+
+  if (isLoading === true) {
+  return (<Spinner />)
+  }
   
   return (
     <div>
-      <button>Sorteeri a-z</button>
-      <button>Sorteeri z-a</button>
-      <button>hind kasvavalt</button>
-      <button>hind kahanevalt</button>
+      <button onClick={sortAZ}>Sorteeri A-Z</button>
+      <button onClick={sortZA}>Sorteeri Z-A</button>
+      <button onClick={sortPriceAsc}>Hind kasvavalt</button>
+      <button onClick={sortPriceDesc}>Hind kahanevalt</button>
+      <button onClick={sortDateAsc}>Sorteeri hiljem lisatud enne</button>
+      <button onClick={sortDateDesc}>Sorteeri varem lisatud enne</button>
       <div>{products.length}tk</div>
       {/* <button onClick={() => filterByCategory("belts")}>belts</button>
       <button onClick={() => filterByCategory("headphones")}>headphones</button> */}
@@ -54,10 +95,12 @@ function HomePage() {
        <ToastContainer />
         {products.map(element =>
         <div key={element.id}>
+          <Link to={"/product/" + element.id}>
           <img src={element.image} alt="" />
           <div>{element.id}</div>
           <div>{element.name}</div>
           <div>{element.price}</div>
+          </Link>
           <div>{element.image}</div>
           <div>{element.catecory}</div>
           <div>{element.description}</div>
