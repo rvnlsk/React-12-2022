@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import './App.css';
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
@@ -11,25 +11,24 @@ import EditProduct from "./pages/admin/EditProduct";
 import MaintainCategories from "./pages/admin/MaintainCategories";
 import MaintainProducts from "./pages/admin/MaintainProducts";
 import MaintainShops from "./pages/admin/MaintainShops";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { useTranslation } from 'react-i18next';
+import NavigationBar from "./components/NavigationBar";
 
 
 
 function App() {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
 
-  const changeLang = (newLang) => {
-    i18n.changeLanguage(newLang);
-    localStorage.setItem("language", newLang);
-  }
+  // const changeLang = (newLang) => {
+  //   i18n.changeLanguage(newLang);
+  //   localStorage.setItem("language", newLang);
+  // }
 
   return (
     <div className="App">
 
-<Navbar bg="dark" variant="dark">
+      <NavigationBar />
+
+{/* <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">Webshop</Navbar.Brand>
           <Nav className="me-auto">
@@ -43,7 +42,7 @@ function App() {
           <img className="lang" onClick={() => changeLang("es")} src="/spain.png" alt="" />
           
         </Container>
-      </Navbar>
+      </Navbar> */}
       
       
      <Routes>

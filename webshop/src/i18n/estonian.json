@@ -1,0 +1,12 @@
+{
+    "translation": {
+      "Welcome to React": "Bienvenue à React et react-i18next",
+      "admin": "Administraatori vaatesse",
+      "shops": "Meie poed",
+      "contact": "Kontakteeru meiega",
+      "cart": "Ostukorvi",
+      "add to cart": "Lisa ostukorvi"
+      
+      
+    }
+  }

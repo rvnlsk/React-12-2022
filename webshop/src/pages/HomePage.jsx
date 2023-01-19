@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+
 import config from "../data/config.json";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import Spinner from "react-bootstrap/Spinner";
+import SortButtons from "../components/home/SortButtons";
+import Product from "../components/home/Product";
+import CarouselGallery from "../components/home/CarouselGallery";
 
 
 function HomePage() {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -23,20 +26,20 @@ function HomePage() {
   }, []);
  
 
-  const addToCart = (productClicked) => {
-    let cartLS = localStorage.getItem("cart");
-    cartLS = JSON.parse(cartLS) || [];
-    const index = cartLS.findIndex(element => element.product.id === productClicked.id);
-    if (index >=0) {
+  // const addToCart = (productClicked) => {
+  //   let cartLS = localStorage.getItem("cart");
+  //   cartLS = JSON.parse(cartLS) || [];
+  //   const index = cartLS.findIndex(element => element.product.id === productClicked.id);
+  //   if (index >=0) {
 
-      cartLS[index].quantity = cartLS[index].quantity + 1; 
-    } else {
-    cartLS.push({"product": productClicked, "quantity": 1});
-  }
-    cartLS = JSON.stringify(cartLS);
-    localStorage.setItem("cart", cartLS);
-    toast.success(t("Added to cart!"), {"position": "bottom-right", "theme": "dark"});
-  }
+  //     cartLS[index].quantity = cartLS[index].quantity + 1; 
+  //   } else {
+  //   cartLS.push({"product": productClicked, "quantity": 1});
+  // }
+  //   cartLS = JSON.stringify(cartLS);
+  //   localStorage.setItem("cart", cartLS);
+  //   toast.success(t("Added to cart!"), {"position": "bottom-right", "theme": "dark"});
+  // }
   
   const filterByCategory = (categoryClicked) => {
     const result = dbProducts.filter(element => element.category === categoryClicked);
@@ -45,35 +48,35 @@ function HomePage() {
 
   const categories = [...new Set(dbProducts.map(element => element.category))];
 
-  const sortAZ = () => {
-    products.sort((a, b) => a.name.localeCompare(b.name));
-    setProducts(products.slice());
-  }
+  // const sortAZ = () => {
+  //   products.sort((a, b) => a.name.localeCompare(b.name));
+  //   setProducts(products.slice());
+  // }
 
-  const sortZA = () => {
-    products.sort((a, b) => b.name.localeCompare(a.name));
-    setProducts(products.slice());
-  }
+  // const sortZA = () => {
+  //   products.sort((a, b) => b.name.localeCompare(a.name));
+  //   setProducts(products.slice());
+  // }
 
-  const sortPriceAsc = () => {
-    products.sort((a, b) => a.price - b.price);
-    setProducts(products.slice());
-  }
+  // const sortPriceAsc = () => {
+  //   products.sort((a, b) => a.price - b.price);
+  //   setProducts(products.slice());
+  // }
 
-  const sortPriceDesc = () => {
-    products.sort((a, b) => b.price - a.price);
-    setProducts(products.slice());
-  }
+  // const sortPriceDesc = () => {
+  //   products.sort((a, b) => b.price - a.price);
+  //   setProducts(products.slice());
+  // }
 
-  const sortDateAsc = () => {
-    products.sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
-    setProducts(products.slice());
-  }
+  // const sortDateAsc = () => {
+  //   products.sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
+  //   setProducts(products.slice());
+  // }
 
-  const sortDateDesc = () => {
-    products.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
-    setProducts(products.slice());
-  }
+  // const sortDateDesc = () => {
+  //   products.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+  //   setProducts(products.slice());
+  // }
 
 
   if (isLoading === true) {
@@ -82,31 +85,36 @@ function HomePage() {
   
   return (
     <div>
-      <button onClick={sortAZ}>Sorteeri A-Z</button>
+      <CarouselGallery />
+      <SortButtons products={products} setProducts={setProducts} />
+      {/* <button onClick={sortAZ}>Sorteeri A-Z</button>
       <button onClick={sortZA}>Sorteeri Z-A</button>
       <button onClick={sortPriceAsc}>Hind kasvavalt</button>
       <button onClick={sortPriceDesc}>Hind kahanevalt</button>
       <button onClick={sortDateAsc}>Sorteeri hiljem lisatud enne</button>
-      <button onClick={sortDateDesc}>Sorteeri varem lisatud enne</button>
+      <button onClick={sortDateDesc}>Sorteeri varem lisatud enne</button> */}
       <div>{products.length}tk</div>
       {/* <button onClick={() => filterByCategory("belts")}>belts</button>
       <button onClick={() => filterByCategory("headphones")}>headphones</button> */}
-      {categories.map(element => <button onClick={() => filterByCategory(element)}>{element}</button>)}
+      {categories.map(element => <button key={element} onClick={() => filterByCategory(element)}>{element}</button>)}
        <ToastContainer />
         {products.map(element =>
-        <div key={element.id}>
-          <Link to={"/product/" + element.id}>
-          <img src={element.image} alt="" />
-          <div>{element.id}</div>
-          <div>{element.name}</div>
-          <div>{element.price}</div>
-          </Link>
-          <div>{element.image}</div>
-          <div>{element.catecory}</div>
-          <div>{element.description}</div>
-          <div>{element.active}</div>
-          <button onClick={() => addToCart(element)}>Add to cart</button>
-          </div>)}
+        
+        // <div key={element.id}>
+        //   <Link to={"/product/" + element.id}>
+        //   <img src={element.image} alt="" />
+        //   <div>{element.id}</div>
+        //   <div>{element.name}</div>
+        //   <div>{element.price}</div>
+        //   </Link>
+        //   <div>{element.image}</div>
+        //   <div>{element.catecory}</div>
+        //   <div>{element.description}</div>
+        //   <div>{element.active}</div>
+        //   <button onClick={() => addToCart(element)}>Add to cart</button>
+        //   </div> 
+        <Product key={element.id} element={element} />
+        )}
     </div>
   )
 }
