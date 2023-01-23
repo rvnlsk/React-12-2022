@@ -20,7 +20,7 @@ function Shops() {
     <button onClick={() => setCoordinates({lngLat: [59.4378, 24.7574], zoom: 11})}>Kõik Tallinna poed</button>
 
     {shops.map(element => 
-    <button onClick={() => setCoordinates({lngLat: [element.xcoord, element.ycoord], zoom: 13})}>{element.name}</button>)}
+    <button key={element.name} onClick={() => setCoordinates({lngLat: [element.xcoord, element.ycoord], zoom: 13})}>{element.name}</button>)}
       
 
     {/* <button onClick={() => setCoordinates({lngLat: [59.4231, 24.7991], zoom: 13})}>Ülemiste</button>

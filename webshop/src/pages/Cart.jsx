@@ -9,6 +9,8 @@ import CartSumContext from "../store/CartSumContext";
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
   const cartSumCtx = useContext(CartSumContext);
+  // locaslStorages saan toodete hinda muuta
+  // lahendus: votame koik tooted fetch abil ja votame hinnad hoopis sealt, vottas localstoragest ID'd
   
 
    // tyhjendamine

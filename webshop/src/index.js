@@ -8,6 +8,7 @@ import './i18n';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import { CartSumContextProvider } from './store/CartSumContext';
+import { AuthContextProvider } from './store/AuthContext';
 
 
 
@@ -16,7 +17,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <CartSumContextProvider>
+        <AuthContextProvider>
         <App />
+        </AuthContextProvider>
       </CartSumContextProvider>
     </BrowserRouter>
   </React.StrictMode>

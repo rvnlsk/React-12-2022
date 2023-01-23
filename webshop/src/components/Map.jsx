@@ -39,7 +39,7 @@ function Map(props) {
       />
 
       {shops.map(element =>
-        <Marker position={[element.xcoord, element.ycoord]}>
+        <Marker key={element.name} position={[element.xcoord, element.ycoord]}>
           <Popup>
             {element.name}. <br /> Avatud {element.time}
           </Popup>
