@@ -1,7 +1,6 @@
 .App {
  width: 100vw;
  height: 100vh;
-
 }
 
 body {
@@ -60,7 +59,6 @@ body {
   justify-content: center;
   align-items: center;
   
-
 }
 
 .SidebarList .row:hover {
@@ -99,7 +97,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
- 
   
 }
 
@@ -115,7 +112,6 @@ body {
 .SocialLinks li a:hover {
   color: rgb(35, 32, 38);
 }
-
 
 .SocialLinks i {
   font-size: 2rem;
@@ -150,7 +146,6 @@ body {
   width: 40%;
   max-width: 400px;
 }
-
 
 .form-box label {
   margin-bottom: 5px;
@@ -189,11 +184,9 @@ body {
   width: 80px;
 }
 
-
 .intro-sentence {
   width: 400px;
   margin-top: 20px;
-  
 }
 
 .map {
@@ -203,14 +196,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
 }
-
 
 .custom-popup .leaflet-popup-content-wrapper {
   background-color: rgb(121, 148, 150);
 }
-
 
 .carousel-container {
   width: 100%;
@@ -241,7 +231,6 @@ body {
 .my-link {
   color: rgb(74, 101, 103);
 }
-
 
 .container {
   display: flex;

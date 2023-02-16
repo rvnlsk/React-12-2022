@@ -80,7 +80,6 @@ function App() {
     fontSize: '15px',
     fontWeight: 'bold',
   };
-  
    
 return (
   // <div className="App">

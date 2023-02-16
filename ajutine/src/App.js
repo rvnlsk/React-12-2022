@@ -7,7 +7,6 @@ import {Contact} from "./pages/Contact";
 import Portfolio from "./pages/Portfolio";
 import Shops from "./pages/Shops";
 
-
 function App() {
   return (
     <div className="App">
@@ -23,7 +22,6 @@ function App() {
    </Routes>
    </div>
       
-
     </div>
   );
 }

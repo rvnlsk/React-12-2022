@@ -4,8 +4,6 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import MailIcon from '@mui/icons-material/Mail';
 import PlaceIcon from '@mui/icons-material/Place';
 
-
-
 export const SidebarData = [
     // {
     //   title: "Home",
@@ -33,8 +31,6 @@ export const SidebarData = [
         link:  "/contact"
       }
       
-     
-
 ]
 
   

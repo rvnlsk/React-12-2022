@@ -21,9 +21,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
-
-
-
 export const Contact = () => {
   const form = useRef();
 
@@ -37,10 +34,6 @@ export const Contact = () => {
           console.log(error.text);
       });
   };
-
-
-
-
 
 
   return (

@@ -26,8 +26,6 @@ function Home() {
           <br />
           <br />
           Enjoy!
-          
-
         </h3>
     </div>
   )
