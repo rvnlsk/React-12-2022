@@ -1,5 +1,5 @@
 .App {
- width: 100vw;
+ /* width: 100vw; */
  height: 100vh;
 }
 
@@ -124,7 +124,7 @@ body {
   align-items: center;
   height: 150px;
   padding-top: 20px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .SidebarLogo img {
@@ -192,7 +192,6 @@ body {
 .map {
   height: 400px;
   width: 1000px;
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -219,13 +218,15 @@ body {
 .telliskivi-btn {
   background-color: rgb(121, 148, 150);
   color: white;
-  padding: 10px 20px;
-  margin-top: 120px;
-  margin-left: 100px;
+  padding: 10px;
+  /* margin-top: 120px;
+  margin-left: 100px; */
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+  display: flex;
+  justify-content: left;
 }
 
 .my-link {
@@ -239,6 +240,7 @@ body {
 
 .text-container {
   flex: 1;
+  margin-left: -200px;
 }
 
 .image-container {
@@ -249,11 +251,49 @@ body {
 }
 
 .my-image {
-  width: 100%;
+  width: 500px;
+  height: 300px;
+  margin-right: -150px;
 }
 
 .home-content {
   margin-top: 120px;
+}
+
+.carousel {
+ /* text-align: "center";
+  max-width: "850px"; */
+  margin: "30px";
+  display: flex;
+  justify-content: center;
+  /* width: "850px";
+          height:"500px"; */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  
+}
+
+.container-shops {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: column;
+  
+}
+
+.container-button {
+  margin: 10px;
+  display: flex;
+  justify-content: left;
 }
 
 

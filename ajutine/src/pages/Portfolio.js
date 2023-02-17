@@ -90,13 +90,16 @@ return (
   //       Projects.
   //     </p>
   <div className="App">
-      <div style={{ textAlign: "center" }}>
-        <div style={{ marginLeft: "-900px" }}>
+
+    <div className="container">
+    <div style={{ textAlign: "center" }}>
+        <div style={{ margin: "1" }}>
           <h2>..online exhibition..</h2>
           <p>
             ..click and hold to pause the carousel..
           </p>
         </div>
+      
       <div
         style={{
           padding: "0 20px",
@@ -106,6 +109,7 @@ return (
           justifyContent: "flex-start",
           
         }}
+
       >
         <Carousel
           data={data}
@@ -126,14 +130,17 @@ return (
           thumbnails={true}
           thumbnailWidth="100px"
           showNavBtn={true}
-          style={{
-            textAlign: "center",
-            maxWidth: "850px",
-            margin: "40px auto",
-          }}
+          className="carousel"
+          // style={{
+          //   textAlign: "center",
+          //   maxWidth: "850px",
+          //   margin: "40px auto",
+          // }}
         />
       </div>
     </div>
+    </div>
+    
   </div>
 );
 }
